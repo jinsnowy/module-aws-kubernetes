@@ -149,10 +149,11 @@ users:
   user:
     exec:
       apiVersion: client.authentication.k8s.io/v1beta1
-      command: aws-iam-authenticator
+      command: aws
       args:
-        - "token"
-        - "-i"
+        - "eks"
+        - "get-token"
+        - "--cluster-name"
         - "${aws_eks_cluster.ms-up-running.name}"
     KUBECONFIG_END
   filename = "kubeconfig"
